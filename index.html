@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arslan Saleem — Android Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Modern Minimalist Dark Theme Reset & Global Vars */
+    :root {
+      --bg-dark: #0f1014;
+      --bg-card: #16171d;
+      --accent: #3b82f6;
+      --accent-muted: rgba(59, 130, 246, 0.15);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: #23252f;
+      --font: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    /* Shared Layout Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Navigation */
+    nav {
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(15, 16, 20, 0.8);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    nav .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+    nav .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    nav .logo span { color: var(--accent); }
+    nav .nav-links a {
+      margin-left: 2rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    nav .nav-links a:hover { color: var(--text-main); }
+    nav .btn-talk {
+      background: var(--text-main);
+      color: var(--bg-dark);
+      padding: 0.5rem 1.2rem;
+      border-radius: 99px;
+      font-weight: 600;
+    }
+    nav .btn-talk:hover { opacity: 0.9; }
+
+    /* Header Section */
+    header {
+      padding: 6rem 0 4rem;
+    }
+    header .profile-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    header .profile-meta strong { color: var(--text-main); }
+    header h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.1;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    header h1 span { color: var(--text-muted); }
+    header .subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+    header .cta-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    header .cta-main {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    header .cta-secondary {
+      border: 1px solid var(--border);
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    header .cta-secondary:hover { background: var(--border); }
+
+    /* Stats Section */
+    .stats-section {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 0;
+      background: rgba(22, 23, 29, 0.3);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+    .stat-item .num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .stat-item .num span { color: var(--accent); }
+    .stat-item .label {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Infinite Skill Marquee */
+    .marquee {
+      padding: 1.5rem 0;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      animation: scroll 20s linear infinite;
+    }
+    .marquee span {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Two Column Grid Structural Base */
+    section {
+      padding: 6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @media (min-width: 850px) {
+      .section-grid { grid-template-columns: 320px 1fr; }
+    }
+    .section-left span {
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+    .section-left h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .section-left h2 span { color: var(--text-muted); }
+    .section-left p { color: var(--text-muted); font-size: 1rem; }
+
+    /* Projects Custom Grid Mapping */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media(min-width: 600px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .project-icon-placeholder {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-muted);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+      color: var(--accent);
+    }
+    .project-arrow { font-size: 1.2rem; color: var(--text-muted); }
+    .project-meta-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .project-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; font-weight: 600; }
+    .project-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .project-tags span {
+      font-size: 0.75rem;
+      background: rgba(255,255,255,0.05);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      color: var(--text-main);
+    }
+
+    /* Experience Timeline Styling */
+    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    @media(min-width: 600px) {
+      .timeline-item { grid-template-columns: 160px 1fr 120px; gap: 1.5rem; }
+    }
+    .timeline-date { color: var(--text-muted); font-size: 0.95rem; }
+    .timeline-role h4 { font-size: 1.15rem; font-weight: 600; }
+    .timeline-role .company { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.75rem; }
+    .timeline-role ul { padding-left: 1.2rem; color: var(--text-muted); font-size: 0.9rem; }
+    .timeline-role li { margin-bottom: 0.4rem; }
+    .timeline-loc { text-align: left; color: var(--text-muted); font-size: 0.9rem; }
+    @media(min-width: 600px) { .timeline-loc { text-align: right; } }
+
+    /* Stack / Tools Section layout */
+    .tools-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .tool-badge {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* Contact Section styling */
+    .contact-card {
+      text-align: left;
+    }
+    .contact-card h2 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; margin-bottom: 1rem; }
+    .contact-card h2 span { color: var(--text-muted); }
+    .contact-card p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin-bottom: 2.5rem; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .contact-btn {
+      border: 1px solid var(--border);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-card);
+    }
+    .contact-btn:hover { border-color: var(--text-main); background: var(--border); }
+
+    /* Footer structure */
+    footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    footer .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-container">
+      <div class="logo"><a href="#">Arslan<span>.</span></a></div>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#tools">Tools</a>
+        <a href="#contact" class="btn-talk">Let's talk</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header Section -->
+  <header class="container">
+    <div class="profile-meta">
+      <strong>Arslan Saleem</strong> — Native Android Engineer[span_0](start_span)[span_0](end_span)
+    </div>
+    <h1>
+      <span>Building High</span><br>
+      Performance Apps
+    </h1>
+    <p class="subtitle">Kotlin  ·  MVVM Architecture  ·  Clean Engineering[span_1](start_span)[span_1](end_span)</p>
+    <div class="cta-buttons">
+      <a href="#projects" class="cta-main">View applications</a>
+      <a href="#contact" class="cta-secondary">Get in touch</a>
+    </div>
+  </header>
+
+  <!-- Key Metrics / Stats Ticker Section -->
+  <div class="stats-section">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <div class="num">1<span>+</span></div>
+        <div class="label">Years Industry Experience[span_2](start_span)[span_2](end_span)</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">150K<span>+</span></div>
+        <div class="label">Production Downloads Managed[span_3](start_span)[span_3](end_span)</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">5<span>+</span></div>
+        <div class="label">Third-party Integrations Deployed[span_4](start_span)[span_4](end_span)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Infinite Skill Marquee Loop Component -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Kotlin</span><span>MVVM</span><span>Room Database</span><span>AdMob</span><span>REST APIs</span><span>Gradle variants</span><span>Secure Storage</span><span>MediaRecorder API</span>
+      <span>Kotlin</span><span>MVVM</span><span>Room Database</span><span>AdMob</span><span>REST APIs</span><span>Gradle variants</span><span>Secure Storage</span><span>MediaRecorder API</span>
+    </div>
+  </div>
+
+  <!-- Selected Work / Projects Section -->
+  <section class="container id" id="projects">
+    <div class="section-grid">
+      <div class="section-left">
+        <span>Selected Work</span>
+        <h2>Recent<br><span>Projects</span></h2>
+        <p>A handpicked showcase of custom production and native Android products engineered natively from scratch.[span_5](start_span)[span_5](end_span)</p>
+      </div>
+      <div class="projects-grid">
+
+        <!-- Project 1: Image Generation App -->
+        <div class="project-card">
+          <div>
+            <div class="project-top">
+              <div class="project-icon-placeholder">AI</div>
+              <span class="project-arrow">↗</span>
+            </div>
+            <div class="project-meta-info">
+              <span>Android · Google Play</span>
+              <span>★ AI Integration</span>
+            </div>
+            <h3>AI Image Generator</h3>
+            <p>Built a responsive AI-powered image generation module within a 4-month development cycle, featuring prompt input interfaces, local context tracking, and direct system downloads with balanced handling.[span_6](start_span)[span_6](end_span)</p>
+          </div>
+          <div class="project-tags">
+            <span>Kotlin</span><span>REST API</span><span>LLM API</span><span>AdMob[span_7](start_span)[span_7](end_span)</span>
+          </div>
+        </div>
+
+        <!-- Project 2: Blood Pressure Tracker App -->
+        <div class="project-card">
+          <div>
+            <div class="project-top">
+              <div class="project-icon-placeholder">BP</div>
+              <span class="project-arrow">↗</span>
+            </div>
+            <div class="project-meta-info">
+              <span>Android · Native Hub</span>
+              <span>★ LiveData Track</span>
+            </div>
+            <h3>Blood Pressure Tracker</h3>
+            <p>Developed a secure health monitoring and visualization application within a 3-month cycle. Utilizes persistent state engines and real-time visualization trends to trace systolic and diastolic metrics over time.[span_8](start_span)[span_8](end_span)</p>
+          </div>
+          <div class="project-tags">
+            <span>Kotlin</span><span>Room DB</span><span>MVVM</span><span>Charts[span_9](start_span)[span_9](end_span)</span>
+          </div>
+        </div>
+
+        <!-- Project 3: Voice Recording App -->
+        <div class="project-card">
+          <div>
+            <div class="project-top">
+              <div class="project-icon-placeholder">REC</div>
+              <span class="project-arrow">↗</span>
+            </div>
+            <div class="project-meta-info">
+              <span>Android · Core System</span>
+              <span>★ Media Hardware</span>
+            </div>
+            <h3>Voice Recorder Application</h3>
+            <p>Constructed an asynchronous audio workflow application within a 1-month development cycle leveraging hardware framework handlers alongside complete structural system directory actions.[span_10](start_span)[span_10](end_span)</p>
+          </div>
+          <div class="project-tags">
+            <span>Kotlin</span><span>MediaRecorder API</span><span>File Management[span_11](start_span)[span_11](end_span)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Career & Experience Section -->
+  <section class="container" id="experience">
+    <div class="section-grid">
+      <div class="section-left">
+        <span>Career</span>
+        <h2>Work<br><span>Experience</span></h2>
+        <p>Formulating responsive architectures and contributing to impactful native Android products.[span_12](start_span)[span_12](end_span)</p>
+      </div>
+      <div class="timeline">
+
+        <!-- Role 1 -->
+        <div class="timeline-item">
+          <div class="timeline-date">May 2025 — Present[span_13](start_span)[span_13](end_span)</div>
+          <div class="timeline-role">
+            <h4>Android Developer</h4>
+            <div class="company">CCT (CCT Technologies)[span_14](start_span)[span_14](end_span)</div>
+            <ul>
+              <li>Engineered and shipped multiple production Android apps, including Hearto, surpassing 150,000+ total active downloads using Kotlin with responsive MVVM styling.[span_15](start_span)[span_15](end_span)</li>
+              <li>Strengthened baseline mobile security configurations implementing custom data obfuscation pipelines and storage safety layers.[span_16](start_span)[span_16](end_span)</li>
+              <li>Integrated 5+ advanced third-party platform API modules and analytics toolsets extending native capabilities.[span_17](start_span)[span_17](end_span)</li>
+              <li>Managed release engineering workflows leveraging multi-variant Gradle compilation tracks for debug and distribution outputs.[span_18](start_span)[span_18](end_span)</li>
+            </ul>
+          </div>
+          <div class="timeline-loc">Rawalpindi, PK[span_19](start_span)[span_19](end_span)</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools & Tech Grid Section -->
+  <section class="container" id="tools">
+    <div class="section-grid">
+      <div class="section-left">
+        <span>Stack</span>
+        <h2>Tools &amp;<br><span>Tech</span></h2>
+        <p>The preferred patterns, core programming ecosystems, libraries, and frameworks I leverage daily to engineer robust native products.[span_20](start_span)[span_20](end_span)</p>
+      </div>
+      <div class="tools-grid">
+        <div class="tool-badge">Kotlin[span_21](start_span)[span_21](end_span)</div>
+        <div class="tool-badge">MVVM Architecture[span_22](start_span)[span_22](end_span)</div>
+        <div class="tool-badge">Object-Oriented Design[span_23](start_span)[span_23](end_span)</div>
+        <div class="tool-badge">LiveData[span_24](start_span)[span_24](end_span)</div>
+        <div class="tool-badge">XML Layout Design[span_25](start_span)[span_25](end_span)</div>
+        <div class="tool-badge">REST API Integration[span_26](start_span)[span_26](end_span)</div>
+        <div class="tool-badge">Third-Party SDKs[span_27](start_span)[span_27](end_span)</div>
+        <div class="tool-badge">AI/LLM APIs[span_28](start_span)[span_28](end_span)</div>
+        <div class="tool-badge">Room Database[span_29](start_span)[span_29](end_span)</div>
+        <div class="tool-badge">Gradle Build System[span_30](start_span)[span_30](end_span)</div>
+        <div class="tool-badge">AdMob Monetization[span_31](start_span)[span_31](end_span)</div>
+        <div class="tool-badge">Code Obfuscation[span_32](start_span)[span_32](end_span)</div>
+        <div class="tool-badge">Secure Data Storage[span_33](start_span)[span_33](end_span)</div>
+        <div class="tool-badge">MediaRecorder API[span_34](start_span)[span_34](end_span)</div>
+        <div class="tool-badge">File Management[span_35](start_span)[span_35](end_span)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action / Contact Form-Link Footer Section -->
+  <section class="container" id="contact">
+    <div class="contact-card">
+      <span>Contact</span>
+      <h2>Let's Work<br><span>Together</span></h2>
+      <p>Whether you have an application project requirement from scratch, or an open engineering role looking for modular development scale—let's discuss the roadmaps.[span_36](start_span)[span_36](end_span)</p>
+      <div class="contact-links">
+        <a href="mailto:arsl77220@gmail.com" class="contact-btn">Email: arsl77220@gmail.com ↗[span_37](start_span)[span_37](end_span)</a>
+        <a href="https://linkedin.com/in/arslan-saleem-4b9517332" target="_blank" rel="noopener" class="contact-btn">Connect on LinkedIn ↗[span_38](start_span)[span_38](end_span)</a>
+        <a href="https://github.com/Arslan338" target="_blank" rel="noopener" class="contact-btn">Explore GitHub ↗[span_39](start_span)[span_39](end_span)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Info -->
+  <footer>
+    <div class="container footer-container">
+      <span>© 2026 Arslan Saleem</span>
+      <span>Rawalpindi, Pakistan[span_40](start_span)[span_40](end_span)</span>
+      <a href="https://linkedin.com/in/arslan-saleem-4b9517332" target="_blank" rel="noopener">LinkedIn ↗[span_41](start_span)[span_41](end_span)</a>
+    </div>
+  </footer>
+
+</body>
+</html>
