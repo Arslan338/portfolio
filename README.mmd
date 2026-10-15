@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arslan Saleem | Android Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        android: '#3DDC84',
+                        darkBg: '#0B0F19',
+                        cardBg: '#151C2C'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0B0F19; color: #F8FAFC; }
+        .glass { background: rgba(21, 28, 44, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .gradient-text { background: linear-gradient(135deg, #3DDC84 0%, #3B82F6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="antialiased selection:bg-android selection:text-darkBg">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-extrabold tracking-tight">ARSLAN<span class="text-android">.DEV</span></a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-android transition">About</a>
+                <a href="#skills" class="hover:text-android transition">Tech Stack</a>
+                <a href="#experience" class="hover:text-android transition">Experience</a>
+                <a href="#projects" class="hover:text-android transition">Apps (1.4M+ DLs)</a>
+                <a href="#contact" class="hover:text-android transition">Contact</a>
+            </div>
+            <a href="mailto:arsl77220@gmail.com" class="bg-android text-darkBg font-bold px-4 py-2 rounded-lg text-sm hover:opacity-90 transition">
+                Hire Me
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="pt-32 pb-20 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+        <div class="md:w-3/5 space-y-6">
+            <div class="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 text-android px-3 py-1 rounded-full text-xs font-semibold">
+                <i class="fa-brands fa-android text-sm"></i>
+                <span>AVAILABLE FOR ANDROID ROLES & FREELANCE</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                Building Scalable Android Apps with <span class="gradient-text">1.4M+ Downloads.</span>
+            </h1>
+            <p class="text-slate-400 text-lg leading-relaxed">
+                Hi, I'm <strong class="text-white">Arslan Saleem</strong>, a Production Android Developer with 2+ years of hands-on experience engineering high-scale applications in <strong class="text-white">Kotlin & MVVM</strong>. Specialized in AI/LLM API integrations, mobile security, AdMob monetization, and end-to-end Google Play delivery.
+            </p>
+            <div class="flex flex-wrap gap-4 pt-2">
+                <a href="#projects" class="bg-android text-darkBg font-bold px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-android/20 transition flex items-center gap-2">
+                    <i class="fa-solid fa-rocket"></i> View Shipped Apps
+                </a>
+                <a href="https://github.com/Arslan338" target="_blank" class="glass px-6 py-3 rounded-xl font-semibold hover:border-slate-500 transition flex items-center gap-2">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/thearslansaleem" target="_blank" class="glass px-6 py-3 rounded-xl font-semibold hover:border-blue-500 transition flex items-center gap-2">
+                    <i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="md:w-2/5 grid grid-cols-2 gap-4 w-full">
+            <div class="glass p-6 rounded-2xl border-t-2 border-android">
+                <div class="text-3xl font-extrabold text-white">1.4M+</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Total App Downloads</div>
+            </div>
+            <div class="glass p-6 rounded-2xl border-t-2 border-blue-500">
+                <div class="text-3xl font-extrabold text-white">12+</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Production Apps Shipped</div>
+            </div>
+            <div class="glass p-6 rounded-2xl border-t-2 border-purple-500">
+                <div class="text-3xl font-extrabold text-white">2+ Yrs</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Kotlin & MVVM Exp</div>
+            </div>
+            <div class="glass p-6 rounded-2xl border-t-2 border-amber-500">
+                <div class="text-3xl font-extrabold text-white">500K+</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Top Single App Scale</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section id="skills" class="py-16 px-6 max-w-6xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-3">
+            <i class="fa-solid fa-layer-group text-android"></i> Technical Arsenal
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass p-6 rounded-2xl">
+                <h3 class="font-bold text-lg text-android mb-3">Core & Architecture</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Kotlin</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">MVVM Architecture</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Object-Oriented Design</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">LiveData</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">XML Layout Design</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Android Services</span>
+                </div>
+            </div>
+            <div class="glass p-6 rounded-2xl">
+                <h3 class="font-bold text-lg text-blue-400 mb-3">APIs, AI & Data</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">REST API Integration</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">AI / LLM API Integration</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Room Database</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Third-Party SDKs</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">MediaRecorder API</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">File Management</span>
+                </div>
+            </div>
+            <div class="glass p-6 rounded-2xl">
+                <h3 class="font-bold text-lg text-purple-400 mb-3">Monetization, Security & Build</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">AdMob (Banner/Interstitial)</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Code Obfuscation</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Secure Data Storage</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Gradle Multi-Variant Builds</span>
+                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Dependency Management</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="py-16 px-6 max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3">
+                    <i class="fa-brands fa-google-play text-android"></i> Production App Portfolio
+                </h2>
+                <p class="text-slate-400 text-sm mt-1">12+ shipped Android applications spanning utilities, AI, streaming, and health.</p>
+            </div>
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap gap-2" id="filter-buttons">
+                <button onclick="filterProjects('all')" class="filter-btn active bg-android text-darkBg font-bold px-4 py-1.5 rounded-lg text-xs transition">All (12)</button>
+                <button onclick="filterProjects('viral')" class="filter-btn glass px-4 py-1.5 rounded-lg text-xs hover:border-android transition">100K - 500K+ Downloads</button>
+                <button onclick="filterProjects('ai')" class="filter-btn glass px-4 py-1.5 rounded-lg text-xs hover:border-android transition">AI & LLM Powered</button>
+                <button onclick="filterProjects('utility')" class="filter-btn glass px-4 py-1.5 rounded-lg text-xs hover:border-android transition">Utility & Health</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+            
+            <!-- Web Scanner -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="viral utility">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">Web Scanner</h3>
+                        <span class="bg-emerald-500/20 text-android text-xs font-bold px-3 py-1 rounded-full">500K+ Downloads</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">High-scale web scanning utility app built with clean XML layouts, third-party SDKs, and REST APIs, managing debug and release variants via Gradle.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">REST API</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">XML</span>
+                </div>
+            </div>
+
+            <!-- Medi Play AI -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="viral ai">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">Medi Play AI</h3>
+                        <span class="bg-emerald-500/20 text-android text-xs font-bold px-3 py-1 rounded-full">500K+ Downloads</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">AI-powered Android application integrating AI/LLM REST APIs into core features with MVVM and LiveData for reliable state management.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">AI/LLM APIs</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">LiveData</span>
+                </div>
+            </div>
+
+            <!-- Drama Drive -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="viral">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">Drama Drive</h3>
+                        <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full">200K+ Downloads</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">Content-streaming Android application utilizing REST APIs for smooth content delivery and third-party SDKs for user engagement and monetization.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">REST API</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Monetization</span>
+                </div>
+            </div>
+
+            <!-- Reels Bite -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="all">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">Reels Bite</h3>
+                        <span class="bg-purple-500/20 text-purple-400 text-xs font-bold px-3 py-1 rounded-full">50K+ Downloads</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">Short-video streaming Android app featuring a responsive Kotlin UI, REST API content pipelines, and engagement SDKs.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">REST API</span>
+                </div>
+            </div>
+
+            <!-- Clap to Find My Phone -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="utility">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">Clap to Find Phone</h3>
+                        <span class="bg-amber-500/20 text-amber-400 text-xs font-bold px-3 py-1 rounded-full">10K+ Downloads</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">Background utility application using Android Services and real-time audio detection to locate idle phones reliably by clapping.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Android Services</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Audio Detection</span>
+                </div>
+            </div>
+
+            <!-- Immersive Interactive -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="all">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">Immersive Interactive</h3>
+                        <span class="bg-amber-500/20 text-amber-400 text-xs font-bold px-3 py-1 rounded-full">10K+ Downloads</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">Interactive Android application engineered with clean object-oriented design patterns and MVVM for high maintainability.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">XML Layouts</span>
+                </div>
+            </div>
+
+            <!-- Image Generation App -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="ai">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">AI Image Generator</h3>
+                        <span class="bg-pink-500/20 text-pink-400 text-xs font-bold px-3 py-1 rounded-full">AI & AdMob</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">Multi-module AI image creation app with prompt input, local history, image downloading, and lifecycle-aware AdMob Banner & Interstitial ads.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">AI/LLM REST API</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">AdMob</span>
+                </div>
+            </div>
+
+            <!-- AI Note Taker -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="ai utility">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">AI Note Taker</h3>
+                        <span class="bg-pink-500/20 text-pink-400 text-xs font-bold px-3 py-1 rounded-full">Smart Productivity</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">AI-assisted note management application combining offline Room Database persistence with LLM APIs for automated note enhancement.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Room DB</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">AI/LLM Integration</span>
+                </div>
+            </div>
+
+            <!-- Blood Pressure Tracker -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="utility">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">BP Health Tracker</h3>
+                        <span class="bg-cyan-500/20 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full">Health Tech</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">Health monitoring app tracking systolic and diastolic metrics across 3 core screens with interactive trend charts and Room persistence.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Room DB</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Custom Charts</span>
+                </div>
+            </div>
+
+            <!-- Drama Shot -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="all">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">Drama Shot</h3>
+                        <span class="bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">Streaming</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">Short-drama video browsing and streaming client featuring REST API integration and responsive MVVM UI architecture.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">REST API</span>
+                </div>
+            </div>
+
+            <!-- Digi Book -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="utility">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">Digi Book</h3>
+                        <span class="bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">E-Reader</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">Digital book reader and library manager powered by Room Database and LiveData for real-time reading progress updates.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Room DB</span>
+                </div>
+            </div>
+
+            <!-- Voice Recording App -->
+            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="utility">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">Voice Recorder Pro</h3>
+                        <span class="bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">Audio Tool</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">Custom audio recording and playback utility built on the MediaRecorder API with complete file organizing, renaming, and deletion workflows.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MediaRecorder API</span>
+                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">File I/O</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Work Experience & Education -->
+    <section id="experience" class="py-16 px-6 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="md:col-span-2 space-y-8">
+            <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3">
+                <i class="fa-solid fa-briefcase text-android"></i> Work Experience
+            </h2>
+
+            <div class="space-y-6 border-l-2 border-slate-800 pl-6">
+                <div class="relative">
+                    <div class="w-3 h-3 bg-android rounded-full absolute -left-[31px] top-2"></div>
+                    <h3 class="text-xl font-bold text-white">Android Developer</h3>
+                    <p class="text-android text-sm font-semibold">Fun Prime Technology (Multinational Company)</p>
+                    <p class="text-slate-400 text-sm mt-2">Developing and maintaining high-scale production Android applications using Kotlin, MVVM architecture, AI/LLM integrations, and REST APIs.</p>
+                </div>
+
+                <div class="relative">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full absolute -left-[31px] top-2"></div>
+                    <h3 class="text-xl font-bold text-white">Android Developer</h3>
+                    <p class="text-blue-400 text-sm font-semibold">App Trick</p>
+                    <p class="text-slate-400 text-sm mt-2">Engineered and maintained production Android applications using Kotlin and MVVM, focusing on responsive UI performance and AdMob monetization.</p>
+                </div>
+
+                <div class="relative">
+                    <div class="w-3 h-3 bg-purple-500 rounded-full absolute -left-[31px] top-2"></div>
+                    <h3 class="text-xl font-bold text-white">Android Developer</h3>
+                    <p class="text-purple-400 text-sm font-semibold">CCT (CCT Technologies) • Rawalpindi, Pakistan</p>
+                    <ul class="text-slate-400 text-sm mt-2 space-y-1.5 list-disc list-inside">
+                        <li>Engineered and shipped multiple production apps including <strong>Hearto (150,000+ downloads)</strong> using Kotlin, MVVM, and XML.</li>
+                        <li>Strengthened mobile security via secure data storage and ProGuard/R8 code obfuscation.</li>
+                        <li>Integrated 5+ third-party APIs and SDKs and collaborated with a 4-person UI/UX & QA team.</li>
+                        <li>Managed multi-variant Gradle builds (debug/release) and delivered 3+ custom apps from scratch.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div>
+            <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3 mb-8">
+                <i class="fa-solid fa-graduation-cap text-android"></i> Education
+            </h2>
+            <div class="glass p-6 rounded-2xl space-y-3">
+                <span class="text-xs font-bold text-android bg-emerald-500/10 px-3 py-1 rounded-full">2020 - 2024</span>
+                <h3 class="text-lg font-bold text-white pt-1">BS Software Engineering</h3>
+                <p class="text-slate-400 text-sm">Islamia University of Bahawalpur</p>
+                <p class="text-xs text-slate-500">CGPA: 2.97 / 4.00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Footer -->
+    <footer id="contact" class="py-16 px-6 border-t border-slate-800/80 mt-12">
+        <div class="max-w-4xl mx-auto glass p-8 md:p-12 rounded-3xl text-center space-y-6">
+            <h2 class="text-3xl font-extrabold">Let's Build Your Next Big Android App</h2>
+            <p class="text-slate-400 max-w-xl mx-auto text-sm">
+                Located in Rawalpindi, Pakistan. Open to full-time Android engineering roles, remote opportunities, and high-impact mobile projects.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 pt-2 text-sm">
+                <a href="mailto:arsl77220@gmail.com" class="bg-android text-darkBg font-bold px-6 py-3 rounded-xl flex items-center gap-2 hover:opacity-90">
+                    <i class="fa-solid fa-envelope"></i> arsl77220@gmail.com
+                </a>
+                <a href="tel:+923096004289" class="glass px-6 py-3 rounded-xl flex items-center gap-2 hover:border-android">
+                    <i class="fa-solid fa-phone text-android"></i> +92-309-6004289
+                </a>
+            </div>
+        </div>
+        <div class="text-center text-xs text-slate-600 mt-8">
+            © 2026 Arslan Saleem. Crafted with Kotlin spirit & Tailwind CSS.
+        </div>
+    </footer>
+
+    <!-- Filter Script -->
+    <script>
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-android', 'text-darkBg', 'font-bold');
+                btn.classList.add('glass');
+            });
+            event.target.classList.add('bg-android', 'text-darkBg', 'font-bold');
+            event.target.classList.remove('glass');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category.includes(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
