@@ -1,449 +1,686 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arslan Saleem | Android Developer Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: {
-                        android: '#3DDC84',
-                        darkBg: '#0B0F19',
-                        cardBg: '#151C2C'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { background-color: #0B0F19; color: #F8FAFC; }
-        .glass { background: rgba(21, 28, 44, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .gradient-text { background: linear-gradient(135deg, #3DDC84 0%, #3B82F6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arslan Saleem | Android Developer</title>
+<meta name="description" content="Arslan Saleem – Android developer (Kotlin, MVVM) with 1.4M+ downloads across shipped Google Play apps. AI/LLM integration, AdMob, utility apps.">
+<meta property="og:title" content="Arslan Saleem | Android Developer">
+<meta property="og:description" content="Kotlin & MVVM Android developer with 1.4M+ app downloads.">
+<meta name="theme-color" content="#05070d">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%233DDC84'/><text x='50' y='68' font-size='52' text-anchor='middle' font-family='Arial' font-weight='800' fill='%2305070d'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+
+<style>
+/* ---------- Tokens ---------- */
+:root{
+  --bg:#05070d;
+  --text:#f5f7fa;
+  --muted:rgba(235,235,245,.62);
+  --faint:rgba(235,235,245,.38);
+  --glass:rgba(255,255,255,.065);
+  --glass-strong:rgba(255,255,255,.11);
+  --stroke:rgba(255,255,255,.13);
+  --highlight:rgba(255,255,255,.32);
+  --chip:rgba(255,255,255,.08);
+  --shadow:0 24px 60px -12px rgba(0,0,0,.55);
+  --accent:#3DDC84;
+  --accent-ink:#04140b;
+  --blue:#0A84FF;
+  --purple:#BF5AF2;
+  --orange:#FF9F0A;
+  --pink:#FF375F;
+  --teal:#64D2FF;
+  --blob-a:#1f8f5a; --blob-b:#1d4ed8; --blob-c:#7c3aed;
+  --r-xl:34px; --r-lg:26px; --r-md:18px;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#eef1f7; --text:#0b0d12; --muted:rgba(60,60,67,.72); --faint:rgba(60,60,67,.45);
+    --glass:rgba(255,255,255,.55); --glass-strong:rgba(255,255,255,.75);
+    --stroke:rgba(255,255,255,.75); --highlight:rgba(255,255,255,.95); --chip:rgba(0,0,0,.05);
+    --shadow:0 24px 50px -14px rgba(30,40,90,.18);
+    --accent:#14a35a; --accent-ink:#ffffff;
+    --blob-a:#7ee8b0; --blob-b:#93b7ff; --blob-c:#d8b4fe;
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#eef1f7; --text:#0b0d12; --muted:rgba(60,60,67,.72); --faint:rgba(60,60,67,.45);
+  --glass:rgba(255,255,255,.55); --glass-strong:rgba(255,255,255,.75);
+  --stroke:rgba(255,255,255,.75); --highlight:rgba(255,255,255,.95); --chip:rgba(0,0,0,.05);
+  --shadow:0 24px 50px -14px rgba(30,40,90,.18);
+  --accent:#14a35a; --accent-ink:#ffffff;
+  --blob-a:#7ee8b0; --blob-b:#93b7ff; --blob-c:#d8b4fe;
+  color-scheme:light;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 96px)}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter",system-ui,sans-serif;
+  background:var(--bg); color:var(--text);
+  -webkit-font-smoothing:antialiased; line-height:1.55; overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:10px}
+
+/* ---------- Wallpaper ---------- */
+.wallpaper{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.wallpaper span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:drift 26s ease-in-out infinite alternate}
+.wallpaper span:nth-child(1){width:46vw;height:46vw;background:var(--blob-a);top:-12vw;left:-10vw}
+.wallpaper span:nth-child(2){width:40vw;height:40vw;background:var(--blob-b);top:30vh;right:-14vw;animation-duration:32s}
+.wallpaper span:nth-child(3){width:36vw;height:36vw;background:var(--blob-c);bottom:-14vw;left:24vw;animation-duration:38s}
+@keyframes drift{to{transform:translate3d(6vw,4vh,0) scale(1.12)}}
+
+/* ---------- Liquid glass ---------- */
+.glass{
+  position:relative; isolation:isolate;
+  background:linear-gradient(160deg,var(--glass-strong),var(--glass) 55%);
+  -webkit-backdrop-filter:blur(28px) saturate(180%);
+  backdrop-filter:blur(28px) saturate(180%);
+  border:1px solid var(--stroke);
+  box-shadow:inset 0 1px 0 var(--highlight), inset 0 -1px 0 rgba(0,0,0,.12), var(--shadow);
+}
+/* specular rim, like iOS liquid glass */
+.glass::before{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:-1;
+  padding:1px;
+  background:linear-gradient(135deg,var(--highlight),transparent 35%,transparent 65%,rgba(255,255,255,.12));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+}
+/* pointer-follow sheen */
+.glass.lens::after{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:-1;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,-40%),rgba(255,255,255,.10),transparent 45%);
+  opacity:0; transition:opacity .3s;
+}
+.glass.lens:hover::after{opacity:1}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+.h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;letter-spacing:-.025em;line-height:1.1}
+.lede{color:var(--muted);max-width:60ch;margin-top:10px}
+
+/* ---------- Nav (floating island) ---------- */
+.nav{
+  position:fixed; top:calc(env(safe-area-inset-top,0px) + 14px); left:50%; transform:translateX(-50%);
+  z-index:50; display:flex; align-items:center; gap:6px; padding:6px 6px 6px 18px;
+  border-radius:999px; width:max-content; max-width:calc(100% - 24px);
+}
+.brand{font-weight:800;letter-spacing:-.02em;margin-right:10px;white-space:nowrap}
+.brand b{color:var(--accent)}
+.nav-links{display:flex;gap:2px}
+.nav-links a{padding:8px 14px;border-radius:999px;font-size:.88rem;font-weight:500;color:var(--muted);transition:background .2s,color .2s}
+.nav-links a:hover,.nav-links a.active{background:var(--chip);color:var(--text)}
+.icon-btn{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:0;background:var(--chip);color:var(--text);cursor:pointer;font-size:.95rem}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:.95rem;
+  padding:12px 20px;border-radius:999px;border:0;cursor:pointer;transition:transform .15s,box-shadow .2s;
+}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 10px 30px -8px color-mix(in srgb,var(--accent) 70%,transparent)}
+.btn-sm{padding:9px 16px;font-size:.85rem}
+
+/* ---------- Hero ---------- */
+.hero{padding-top:150px;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.live{
+  display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;border-radius:999px;font-size:.85rem;font-weight:500;
+}
+.live i.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.02;letter-spacing:-.045em;font-weight:800;margin:22px 0 20px}
+.hero h1 .num{
+  background:linear-gradient(120deg,var(--accent),var(--teal) 50%,var(--blue));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{color:var(--muted);font-size:1.12rem;max-width:56ch}
+.hero p strong{color:var(--text);font-weight:600}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.facts{display:flex;flex-wrap:wrap;gap:28px;margin-top:40px}
+.facts div{font-size:.85rem;color:var(--muted)}
+.facts strong{display:block;font-size:1.6rem;color:var(--text);letter-spacing:-.03em;font-weight:700}
+
+/* ---------- Google Pixel device ---------- */
+.phone-wrap{display:flex;justify-content:center;perspective:1400px}
+.phone{
+  width:310px;aspect-ratio:9/19.5;border-radius:46px;padding:10px;position:relative;
+  background:linear-gradient(150deg,#2a2c31,#141518 45%,#24262b);
+  box-shadow:0 0 0 2px #3c3f46 inset,0 0 0 1px #0b0b0d,0 40px 90px -20px rgba(0,0,0,.6);
+  transform:rotateY(-10deg) rotateX(4deg);transition:transform .6s cubic-bezier(.2,.8,.2,1);
+}
+.phone:hover{transform:rotateY(0) rotateX(0)}
+/* power + volume keys on the right edge, Pixel style */
+.phone::before,.phone::after{content:"";position:absolute;right:-3px;width:3px;border-radius:0 3px 3px 0;background:#3c3f46}
+.phone::before{top:22%;height:44px}
+.phone::after{top:34%;height:78px}
+.screen{
+  position:relative;height:100%;border-radius:37px;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(110% 60% at 0% 0%,#1f9d61 0%,transparent 60%),
+    radial-gradient(90% 55% at 100% 45%,#1a56db 0%,transparent 62%),
+    radial-gradient(100% 55% at 30% 100%,#0f766e 0%,transparent 60%),#0b1220;
+  padding:10px 14px 0;display:flex;flex-direction:column;
+}
+.punch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:13px;height:13px;border-radius:50%;background:#000;box-shadow:0 0 0 2px rgba(0,0,0,.35);z-index:3}
+.status{display:flex;justify-content:space-between;align-items:center;font-size:.74rem;font-weight:500;padding:2px 8px 0;height:22px;font-family:"Roboto","Inter",system-ui,sans-serif}
+.status span:last-child{display:flex;gap:6px;font-size:.66rem}
+.glance{padding:22px 8px 0}
+.glance .date{font-size:1.25rem;font-weight:500;letter-spacing:-.01em}
+.glance small{display:flex;align-items:center;gap:6px;font-size:.72rem;opacity:.85;margin-top:2px}
+.widget{
+  margin-top:16px;border-radius:26px;padding:14px 16px;
+  background:rgba(214,255,228,.16);-webkit-backdrop-filter:blur(20px) saturate(170%);backdrop-filter:blur(20px) saturate(170%);
+  border:1px solid rgba(255,255,255,.18);
+}
+.widget small{font-size:.68rem;opacity:.8;display:flex;align-items:center;gap:6px}
+.widget .big{font-size:1.7rem;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.bars{display:flex;align-items:flex-end;gap:6px;height:44px;margin-top:8px}
+.bars i{flex:1;border-radius:6px 6px 3px 3px;background:linear-gradient(#b7f5cf,#3DDC84);transform-origin:bottom;animation:grow 1.2s cubic-bezier(.2,.8,.2,1) both}
+.bars i:nth-child(2){animation-delay:.08s}.bars i:nth-child(3){animation-delay:.16s}.bars i:nth-child(4){animation-delay:.24s}.bars i:nth-child(5){animation-delay:.32s}
+@keyframes grow{from{transform:scaleY(0)}}
+.bar-labels{display:flex;gap:6px;font-size:.52rem;opacity:.75;margin-top:4px}
+.bar-labels span{flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.home-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px;margin-top:auto;padding-bottom:16px}
+.home-app{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:.56rem;background:none;border:0;color:#fff;cursor:pointer;font-family:inherit}
+.home-app span{max-width:60px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.95}
+.dock{display:flex;justify-content:space-around;padding:4px 0 12px}
+.gsearch{
+  display:flex;align-items:center;gap:10px;height:44px;border-radius:999px;padding:0 14px;margin-bottom:6px;
+  background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+}
+.gsearch .g{font-size:1.05rem;color:#fff}
+.gsearch .sp{flex:1}
+.gsearch .mic{color:#8ab4f8}.gsearch .lens-i{color:#81c995}
+.gesture{width:96px;height:4px;border-radius:4px;background:rgba(255,255,255,.85);margin:6px auto 9px}
+
+/* App icon */
+.app-icon{
+  --s:52px; width:var(--s);height:var(--s);border-radius:calc(var(--s) * .3);flex:none;
+  display:grid;place-items:center;color:#fff;font-size:calc(var(--s) * .42);
+  background:linear-gradient(150deg,var(--g1),var(--g2));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 14px -4px rgba(0,0,0,.4);
+  position:relative;overflow:hidden;transition:transform .2s;
+}
+/* Pixel launcher uses round icons */
+.home-app .app-icon{--s:46px;border-radius:50%;font-size:1.05rem}
+.home-app:hover .app-icon,.home-app:focus-visible .app-icon{transform:scale(1.08)}
+
+/* ---------- Skills ---------- */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.skill{border-radius:var(--r-lg);padding:26px}
+.skill h3{font-size:1.05rem;font-weight:650;display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.skill h3 .app-icon{--s:36px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--chip);border:1px solid var(--stroke);padding:6px 12px;border-radius:999px;font-size:.84rem;color:var(--text)}
+
+/* ---------- Segmented control ---------- */
+.proj-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:28px}
+.segmented-scroll{overflow-x:auto;max-width:100%;scrollbar-width:none;padding:2px}
+.segmented-scroll::-webkit-scrollbar{display:none}
+.segmented{position:relative;display:inline-flex;padding:4px;border-radius:14px;white-space:nowrap}
+.seg-pill{
+  position:absolute;top:4px;bottom:4px;left:0;border-radius:10px;
+  background:var(--glass-strong);box-shadow:inset 0 1px 0 var(--highlight),0 3px 10px rgba(0,0,0,.2);
+  border:1px solid var(--stroke);transition:transform .35s cubic-bezier(.3,1.3,.5,1),width .35s cubic-bezier(.3,1.3,.5,1);
+}
+.seg-btn{
+  position:relative;z-index:1;border:0;background:none;color:var(--muted);font:inherit;font-size:.85rem;font-weight:600;
+  padding:8px 14px;border-radius:10px;cursor:pointer;transition:color .2s
+}
+.seg-btn[aria-pressed="true"]{color:var(--text)}
+.seg-btn em{font-style:normal;opacity:.55;margin-left:4px;font-weight:500}
+
+/* ---------- Project cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{border-radius:var(--r-lg);padding:22px;display:flex;flex-direction:column;gap:14px;transition:transform .25s,opacity .3s}
+.card:hover{transform:translateY(-4px)}
+.card.hide{display:none}
+.card.flash{animation:flash 1.4s ease}
+@keyframes flash{0%,100%{box-shadow:inset 0 1px 0 var(--highlight),var(--shadow)}30%{box-shadow:0 0 0 3px var(--accent),var(--shadow)}}
+.card-top{display:flex;gap:14px;align-items:center}
+.card-top h3{font-size:1.1rem;font-weight:650;letter-spacing:-.01em;line-height:1.25}
+.card p{color:var(--muted);font-size:.92rem;flex:1}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;font-weight:600;padding:3px 9px;border-radius:999px;margin-top:4px;
+  background:color-mix(in srgb,var(--c) 18%,transparent);color:var(--c)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding-top:14px;border-top:1px solid var(--stroke)}
+.tags span{font-size:.76rem;padding:4px 10px;border-radius:8px;background:var(--chip);color:var(--muted)}
+.new-flag{margin-left:auto;font-size:.7rem;font-weight:700;color:var(--accent);align-self:flex-start;white-space:nowrap}
+
+/* ---------- Experience ---------- */
+.exp{display:grid;grid-template-columns:2fr 1fr;gap:28px;margin-top:40px;align-items:start}
+.timeline{border-radius:var(--r-xl);padding:8px}
+.job{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:20px;border-radius:24px}
+.job + .job{border-top:1px solid var(--stroke);border-radius:0}
+.job .app-icon{--s:46px}
+.job h3{font-size:1.08rem;font-weight:650}
+.job .co{font-size:.9rem;color:var(--c);font-weight:600}
+.job p,.job li{color:var(--muted);font-size:.92rem;margin-top:6px}
+.job ul{padding-left:18px;margin-top:6px}
+.job li strong{color:var(--text);font-weight:600}
+.edu{border-radius:var(--r-xl);padding:26px}
+.edu .yr{display:inline-block;font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--chip);color:var(--accent)}
+.edu h3{font-size:1.15rem;margin:12px 0 4px}
+.edu p{color:var(--muted);font-size:.92rem}
+
+/* ---------- Contact (iOS settings list) ---------- */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.contact h2{font-size:clamp(2rem,4.4vw,3.2rem);letter-spacing:-.035em;line-height:1.05;font-weight:800}
+.list{border-radius:var(--r-lg);overflow:hidden}
+.row{display:flex;align-items:center;gap:14px;padding:14px 18px;transition:background .2s}
+.row:hover{background:var(--chip)}
+.row + .row{border-top:1px solid var(--stroke)}
+.row .app-icon{--s:34px;font-size:.95rem}
+.row div{flex:1;min-width:0}
+.row small{display:block;color:var(--muted);font-size:.8rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .chev{color:var(--faint);font-size:.8rem}
+footer{text-align:center;color:var(--faint);font-size:.8rem;padding:30px 0 50px}
+
+/* ---------- Mobile tab bar ---------- */
+.tabbar{display:none}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1000px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .skills{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-top:120px;gap:44px}
+  .phone{transform:none;width:280px}
+  .exp,.contact{grid-template-columns:1fr}
+  .nav-links,.nav .hire{display:none}
+  .nav{padding:6px 6px 6px 18px}
+  .tabbar{
+    display:flex;position:fixed;z-index:50;left:12px;right:12px;
+    bottom:calc(env(safe-area-inset-bottom,0px) + 12px);
+    border-radius:28px;padding:6px;justify-content:space-around;
+  }
+  .tabbar a{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.66rem;font-weight:600;color:var(--muted);padding:7px 10px;border-radius:20px;flex:1}
+  .tabbar a svg{font-size:1.1rem}
+  .tabbar a.active{color:var(--accent);background:var(--chip)}
+  footer{padding-bottom:120px}
+}
+@media (max-width:620px){
+  .grid{grid-template-columns:1fr}
+  section{padding:64px 0}
+  .wrap{padding:0 18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
-<body class="antialiased selection:bg-android selection:text-darkBg">
+<body>
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-extrabold tracking-tight">ARSLAN<span class="text-android">.DEV</span></a>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
-                <a href="#about" class="hover:text-android transition">About</a>
-                <a href="#skills" class="hover:text-android transition">Tech Stack</a>
-                <a href="#experience" class="hover:text-android transition">Experience</a>
-                <a href="#projects" class="hover:text-android transition">Apps (1.4M+ DLs)</a>
-                <a href="#contact" class="hover:text-android transition">Contact</a>
-            </div>
-            <a href="mailto:arsl77220@gmail.com" class="bg-android text-darkBg font-bold px-4 py-2 rounded-lg text-sm hover:opacity-90 transition">
-                Hire Me
-            </a>
+<div class="wallpaper" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<!-- Floating nav -->
+<nav class="nav glass" aria-label="Main">
+  <a href="#home" class="brand">Arslan<b>.dev</b></a>
+  <div class="nav-links">
+    <a href="#home" class="active">Home</a>
+    <a href="#skills">Stack</a>
+    <a href="#projects">Apps</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="icon-btn" id="themeBtn" aria-label="Toggle light or dark mode"><i class="fa-solid fa-circle-half-stroke"></i></button>
+  <a href="mailto:arsl77220@gmail.com" class="btn btn-primary btn-sm hire">Hire me</a>
+</nav>
+
+<main>
+<!-- Hero -->
+<header class="wrap hero" id="home">
+  <div>
+    <span class="live glass"><i class="dot"></i>Open to Android roles &amp; freelance work</span>
+    <h1>Android apps that <span class="num">1.4 million</span> people have installed.</h1>
+    <p>I’m <strong>Arslan Saleem</strong>, a production Android developer with 1.5+ years building in <strong>Kotlin and MVVM</strong>. I ship to Google Play end to end: AI/LLM features, AdMob monetization, mobile security and multi-variant Gradle builds.</p>
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-primary"><i class="fa-brands fa-google-play"></i> See shipped apps</a>
+      <a href="https://github.com/Arslan338" target="_blank" rel="noopener" class="btn glass lens"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="https://linkedin.com/in/thearslansaleem" target="_blank" rel="noopener" class="btn glass lens"><i class="fa-brands fa-linkedin" style="color:var(--blue)"></i> LinkedIn</a>
+    </div>
+    <div class="facts">
+      <div><strong data-count="12" data-suffix="+">12+</strong>apps shipped to Play</div>
+      <div><strong data-count="500" data-suffix="K+">500K+</strong>installs on a single app</div>
+      <div><strong data-count="1.5" data-dec="1" data-suffix="+ yrs">1.5+ yrs</strong>Kotlin &amp; MVVM</div>
+    </div>
+  </div>
+
+  <div class="phone-wrap">
+    <div class="phone" aria-label="Google Pixel showing Arslan’s apps">
+      <div class="screen">
+        <div class="punch"></div>
+        <div class="status"><span id="clock">9:41</span><span><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-signal"></i><i class="fa-solid fa-battery-three-quarters"></i></span></div>
+        <div class="glance">
+          <div class="date" id="glanceDate">Monday, Nov 2</div>
+          <small><i class="fa-brands fa-android" style="color:#3DDC84"></i> 19 apps built in Kotlin</small>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="about" class="pt-32 pb-20 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-        <div class="md:w-3/5 space-y-6">
-            <div class="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 text-android px-3 py-1 rounded-full text-xs font-semibold">
-                <i class="fa-brands fa-android text-sm"></i>
-                <span>AVAILABLE FOR ANDROID ROLES & FREELANCE</span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-                Building Scalable Android Apps with <span class="gradient-text">1.4M+ Downloads.</span>
-            </h1>
-            <p class="text-slate-400 text-lg leading-relaxed">
-                Hi, I'm <strong class="text-white">Arslan Saleem</strong>, a Production Android Developer with 2+ years of hands-on experience engineering high-scale applications in <strong class="text-white">Kotlin & MVVM</strong>. Specialized in AI/LLM API integrations, mobile security, AdMob monetization, and end-to-end Google Play delivery.
-            </p>
-            <div class="flex flex-wrap gap-4 pt-2">
-                <a href="#projects" class="bg-android text-darkBg font-bold px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-android/20 transition flex items-center gap-2">
-                    <i class="fa-solid fa-rocket"></i> View Shipped Apps
-                </a>
-                <a href="https://github.com/Arslan338" target="_blank" class="glass px-6 py-3 rounded-xl font-semibold hover:border-slate-500 transition flex items-center gap-2">
-                    <i class="fa-brands fa-github"></i> GitHub
-                </a>
-                <a href="https://linkedin.com/in/thearslansaleem" target="_blank" class="glass px-6 py-3 rounded-xl font-semibold hover:border-blue-500 transition flex items-center gap-2">
-                    <i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn
-                </a>
-            </div>
+        <div class="widget">
+          <small><i class="fa-brands fa-google-play"></i> Total downloads</small>
+          <div class="big">1.4M+</div>
+          <div class="bars">
+            <i style="height:100%"></i><i style="height:100%"></i><i style="height:40%"></i><i style="height:30%"></i><i style="height:12%"></i>
+          </div>
+          <div class="bar-labels"><span>Web Scanner</span><span>Medi Play</span><span>Drama Drive</span><span>Hearto</span><span>Reels</span></div>
         </div>
-
-        <!-- Metric Cards -->
-        <div class="md:w-2/5 grid grid-cols-2 gap-4 w-full">
-            <div class="glass p-6 rounded-2xl border-t-2 border-android">
-                <div class="text-3xl font-extrabold text-white">1.4M+</div>
-                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Total App Downloads</div>
-            </div>
-            <div class="glass p-6 rounded-2xl border-t-2 border-blue-500">
-                <div class="text-3xl font-extrabold text-white">12+</div>
-                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Production Apps Shipped</div>
-            </div>
-            <div class="glass p-6 rounded-2xl border-t-2 border-purple-500">
-                <div class="text-3xl font-extrabold text-white">2+ Yrs</div>
-                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Kotlin & MVVM Exp</div>
-            </div>
-            <div class="glass p-6 rounded-2xl border-t-2 border-amber-500">
-                <div class="text-3xl font-extrabold text-white">500K+</div>
-                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Top Single App Scale</div>
-            </div>
+        <div class="home-grid" id="homeGrid"></div>
+        <div class="dock" id="dock"></div>
+        <div class="gsearch" aria-hidden="true">
+          <i class="fa-brands fa-google g"></i><span class="sp"></span><i class="fa-solid fa-microphone mic"></i><i class="fa-solid fa-camera lens-i"></i>
         </div>
-    </section>
+        <div class="gesture"></div>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <!-- Technical Skills -->
-    <section id="skills" class="py-16 px-6 max-w-6xl mx-auto">
-        <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-3">
-            <i class="fa-solid fa-layer-group text-android"></i> Technical Arsenal
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass p-6 rounded-2xl">
-                <h3 class="font-bold text-lg text-android mb-3">Core & Architecture</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Kotlin</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">MVVM Architecture</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Object-Oriented Design</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">LiveData</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">XML Layout Design</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Android Services</span>
-                </div>
-            </div>
-            <div class="glass p-6 rounded-2xl">
-                <h3 class="font-bold text-lg text-blue-400 mb-3">APIs, AI & Data</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">REST API Integration</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">AI / LLM API Integration</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Room Database</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Third-Party SDKs</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">MediaRecorder API</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">File Management</span>
-                </div>
-            </div>
-            <div class="glass p-6 rounded-2xl">
-                <h3 class="font-bold text-lg text-purple-400 mb-3">Monetization, Security & Build</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">AdMob (Banner/Interstitial)</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Code Obfuscation</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Secure Data Storage</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Gradle Multi-Variant Builds</span>
-                    <span class="bg-slate-800 px-3 py-1.5 rounded-lg text-sm">Dependency Management</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Skills -->
+<section id="skills" class="wrap">
+  <h2 class="h2 reveal">What I build with</h2>
+  <div class="skills">
+    <div class="skill glass lens reveal">
+      <h3><span class="app-icon" style="--g1:#3DDC84;--g2:#0e8a4c"><i class="fa-brands fa-android"></i></span>Core &amp; architecture</h3>
+      <div class="chips"><span class="chip">Kotlin</span><span class="chip">MVVM</span><span class="chip">LiveData</span><span class="chip">Object-oriented design</span><span class="chip">XML layouts</span><span class="chip">Android Services</span></div>
+    </div>
+    <div class="skill glass lens reveal">
+      <h3><span class="app-icon" style="--g1:#5ac8fa;--g2:#0a5bd8"><i class="fa-solid fa-microchip"></i></span>APIs, AI &amp; data</h3>
+      <div class="chips"><span class="chip">REST APIs</span><span class="chip">AI / LLM APIs</span><span class="chip">Room Database</span><span class="chip">Third-party SDKs</span><span class="chip">MediaRecorder</span><span class="chip">File management</span></div>
+    </div>
+    <div class="skill glass lens reveal">
+      <h3><span class="app-icon" style="--g1:#d07bff;--g2:#6d28d9"><i class="fa-solid fa-shield-halved"></i></span>Monetization, security &amp; build</h3>
+      <div class="chips"><span class="chip">AdMob banner &amp; interstitial</span><span class="chip">ProGuard / R8</span><span class="chip">Secure storage</span><span class="chip">Gradle build variants</span><span class="chip">Dependency management</span></div>
+    </div>
+  </div>
+</section>
 
-    <!-- Featured Projects Section -->
-    <section id="projects" class="py-16 px-6 max-w-6xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
-            <div>
-                <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3">
-                    <i class="fa-brands fa-google-play text-android"></i> Production App Portfolio
-                </h2>
-                <p class="text-slate-400 text-sm mt-1">12+ shipped Android applications spanning utilities, AI, streaming, and health.</p>
-            </div>
-            <!-- Filter Buttons -->
-            <div class="flex flex-wrap gap-2" id="filter-buttons">
-                <button onclick="filterProjects('all')" class="filter-btn active bg-android text-darkBg font-bold px-4 py-1.5 rounded-lg text-xs transition">All (12)</button>
-                <button onclick="filterProjects('viral')" class="filter-btn glass px-4 py-1.5 rounded-lg text-xs hover:border-android transition">100K - 500K+ Downloads</button>
-                <button onclick="filterProjects('ai')" class="filter-btn glass px-4 py-1.5 rounded-lg text-xs hover:border-android transition">AI & LLM Powered</button>
-                <button onclick="filterProjects('utility')" class="filter-btn glass px-4 py-1.5 rounded-lg text-xs hover:border-android transition">Utility & Health</button>
-            </div>
-        </div>
+<!-- Projects -->
+<section id="projects" class="wrap">
+  <div class="proj-head">
+    <div class="reveal">
+      <h2 class="h2">Apps I’ve built</h2>
+      <p class="lede">Shipped Play Store apps across utilities, AI, streaming and health, plus my new All-Utility suite.</p>
+    </div>
+    <div class="segmented-scroll">
+      <div class="segmented glass" role="group" aria-label="Filter apps" id="segmented">
+        <span class="seg-pill" id="segPill"></span>
+      </div>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
-            
-            <!-- Web Scanner -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="viral utility">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">Web Scanner</h3>
-                        <span class="bg-emerald-500/20 text-android text-xs font-bold px-3 py-1 rounded-full">500K+ Downloads</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">High-scale web scanning utility app built with clean XML layouts, third-party SDKs, and REST APIs, managing debug and release variants via Gradle.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">REST API</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">XML</span>
-                </div>
-            </div>
-
-            <!-- Medi Play AI -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="viral ai">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">Medi Play AI</h3>
-                        <span class="bg-emerald-500/20 text-android text-xs font-bold px-3 py-1 rounded-full">500K+ Downloads</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">AI-powered Android application integrating AI/LLM REST APIs into core features with MVVM and LiveData for reliable state management.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">AI/LLM APIs</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">LiveData</span>
-                </div>
-            </div>
-
-            <!-- Drama Drive -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="viral">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">Drama Drive</h3>
-                        <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full">200K+ Downloads</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">Content-streaming Android application utilizing REST APIs for smooth content delivery and third-party SDKs for user engagement and monetization.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">REST API</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Monetization</span>
-                </div>
-            </div>
-
-            <!-- Reels Bite -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="all">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">Reels Bite</h3>
-                        <span class="bg-purple-500/20 text-purple-400 text-xs font-bold px-3 py-1 rounded-full">50K+ Downloads</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">Short-video streaming Android app featuring a responsive Kotlin UI, REST API content pipelines, and engagement SDKs.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">REST API</span>
-                </div>
-            </div>
-
-            <!-- Clap to Find My Phone -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="utility">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">Clap to Find Phone</h3>
-                        <span class="bg-amber-500/20 text-amber-400 text-xs font-bold px-3 py-1 rounded-full">10K+ Downloads</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">Background utility application using Android Services and real-time audio detection to locate idle phones reliably by clapping.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Android Services</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Audio Detection</span>
-                </div>
-            </div>
-
-            <!-- Immersive Interactive -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="all">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">Immersive Interactive</h3>
-                        <span class="bg-amber-500/20 text-amber-400 text-xs font-bold px-3 py-1 rounded-full">10K+ Downloads</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">Interactive Android application engineered with clean object-oriented design patterns and MVVM for high maintainability.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">XML Layouts</span>
-                </div>
-            </div>
-
-            <!-- Image Generation App -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="ai">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">AI Image Generator</h3>
-                        <span class="bg-pink-500/20 text-pink-400 text-xs font-bold px-3 py-1 rounded-full">AI & AdMob</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">Multi-module AI image creation app with prompt input, local history, image downloading, and lifecycle-aware AdMob Banner & Interstitial ads.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">AI/LLM REST API</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">AdMob</span>
-                </div>
-            </div>
-
-            <!-- AI Note Taker -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="ai utility">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">AI Note Taker</h3>
-                        <span class="bg-pink-500/20 text-pink-400 text-xs font-bold px-3 py-1 rounded-full">Smart Productivity</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">AI-assisted note management application combining offline Room Database persistence with LLM APIs for automated note enhancement.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Room DB</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">AI/LLM Integration</span>
-                </div>
-            </div>
-
-            <!-- Blood Pressure Tracker -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="utility">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">BP Health Tracker</h3>
-                        <span class="bg-cyan-500/20 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full">Health Tech</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">Health monitoring app tracking systolic and diastolic metrics across 3 core screens with interactive trend charts and Room persistence.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Room DB</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Custom Charts</span>
-                </div>
-            </div>
-
-            <!-- Drama Shot -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="all">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">Drama Shot</h3>
-                        <span class="bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">Streaming</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">Short-drama video browsing and streaming client featuring REST API integration and responsive MVVM UI architecture.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">REST API</span>
-                </div>
-            </div>
-
-            <!-- Digi Book -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="utility">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">Digi Book</h3>
-                        <span class="bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">E-Reader</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">Digital book reader and library manager powered by Room Database and LiveData for real-time reading progress updates.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MVVM</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Room DB</span>
-                </div>
-            </div>
-
-            <!-- Voice Recording App -->
-            <div class="project-card glass p-6 rounded-2xl flex flex-col justify-between hover:border-android/50 transition" data-category="utility">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white">Voice Recorder Pro</h3>
-                        <span class="bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">Audio Tool</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-4">Custom audio recording and playback utility built on the MediaRecorder API with complete file organizing, renaming, and deletion workflows.</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">Kotlin</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">MediaRecorder API</span>
-                    <span class="bg-slate-800/80 px-2.5 py-1 rounded">File I/O</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Work Experience & Education -->
-    <section id="experience" class="py-16 px-6 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-        <div class="md:col-span-2 space-y-8">
-            <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3">
-                <i class="fa-solid fa-briefcase text-android"></i> Work Experience
-            </h2>
-
-            <div class="space-y-6 border-l-2 border-slate-800 pl-6">
-                <div class="relative">
-                    <div class="w-3 h-3 bg-android rounded-full absolute -left-[31px] top-2"></div>
-                    <h3 class="text-xl font-bold text-white">Android Developer</h3>
-                    <p class="text-android text-sm font-semibold">Fun Prime Technology (Multinational Company)</p>
-                    <p class="text-slate-400 text-sm mt-2">Developing and maintaining high-scale production Android applications using Kotlin, MVVM architecture, AI/LLM integrations, and REST APIs.</p>
-                </div>
-
-                <div class="relative">
-                    <div class="w-3 h-3 bg-blue-500 rounded-full absolute -left-[31px] top-2"></div>
-                    <h3 class="text-xl font-bold text-white">Android Developer</h3>
-                    <p class="text-blue-400 text-sm font-semibold">App Trick</p>
-                    <p class="text-slate-400 text-sm mt-2">Engineered and maintained production Android applications using Kotlin and MVVM, focusing on responsive UI performance and AdMob monetization.</p>
-                </div>
-
-                <div class="relative">
-                    <div class="w-3 h-3 bg-purple-500 rounded-full absolute -left-[31px] top-2"></div>
-                    <h3 class="text-xl font-bold text-white">Android Developer</h3>
-                    <p class="text-purple-400 text-sm font-semibold">CCT (CCT Technologies) • Rawalpindi, Pakistan</p>
-                    <ul class="text-slate-400 text-sm mt-2 space-y-1.5 list-disc list-inside">
-                        <li>Engineered and shipped multiple production apps including <strong>Hearto (150,000+ downloads)</strong> using Kotlin, MVVM, and XML.</li>
-                        <li>Strengthened mobile security via secure data storage and ProGuard/R8 code obfuscation.</li>
-                        <li>Integrated 5+ third-party APIs and SDKs and collaborated with a 4-person UI/UX & QA team.</li>
-                        <li>Managed multi-variant Gradle builds (debug/release) and delivered 3+ custom apps from scratch.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Education -->
+<!-- Experience -->
+<section id="experience" class="wrap">
+  <h2 class="h2 reveal">Experience</h2>
+  <div class="exp">
+    <div class="timeline glass reveal">
+      <div class="job" style="--c:var(--accent)">
+        <span class="app-icon" style="--g1:#3DDC84;--g2:#0e8a4c"><i class="fa-solid fa-building"></i></span>
         <div>
-            <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3 mb-8">
-                <i class="fa-solid fa-graduation-cap text-android"></i> Education
-            </h2>
-            <div class="glass p-6 rounded-2xl space-y-3">
-                <span class="text-xs font-bold text-android bg-emerald-500/10 px-3 py-1 rounded-full">2020 - 2024</span>
-                <h3 class="text-lg font-bold text-white pt-1">BS Software Engineering</h3>
-                <p class="text-slate-400 text-sm">Islamia University of Bahawalpur</p>
-                <p class="text-xs text-slate-500">CGPA: 2.97 / 4.00</p>
-            </div>
+          <h3>Android Developer</h3>
+          <div class="co">Fun Prime Technology</div>
+          <p>Developing and maintaining high-scale production apps with Kotlin, MVVM, AI/LLM integrations and REST APIs.</p>
         </div>
-    </section>
-
-    <!-- Contact Footer -->
-    <footer id="contact" class="py-16 px-6 border-t border-slate-800/80 mt-12">
-        <div class="max-w-4xl mx-auto glass p-8 md:p-12 rounded-3xl text-center space-y-6">
-            <h2 class="text-3xl font-extrabold">Let's Build Your Next Big Android App</h2>
-            <p class="text-slate-400 max-w-xl mx-auto text-sm">
-                Located in Rawalpindi, Pakistan. Open to full-time Android engineering roles, remote opportunities, and high-impact mobile projects.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4 pt-2 text-sm">
-                <a href="mailto:arsl77220@gmail.com" class="bg-android text-darkBg font-bold px-6 py-3 rounded-xl flex items-center gap-2 hover:opacity-90">
-                    <i class="fa-solid fa-envelope"></i> arsl77220@gmail.com
-                </a>
-                <a href="tel:+923096004289" class="glass px-6 py-3 rounded-xl flex items-center gap-2 hover:border-android">
-                    <i class="fa-solid fa-phone text-android"></i> +92-309-6004289
-                </a>
-            </div>
+      </div>
+      <div class="job" style="--c:var(--blue)">
+        <span class="app-icon" style="--g1:#5ac8fa;--g2:#0a5bd8"><i class="fa-solid fa-mobile-screen"></i></span>
+        <div>
+          <h3>Android Developer</h3>
+          <div class="co">App Trick</div>
+          <p>Built and maintained production apps in Kotlin and MVVM, focused on responsive UI performance and AdMob monetization.</p>
         </div>
-        <div class="text-center text-xs text-slate-600 mt-8">
-            © 2026 Arslan Saleem. Crafted with Kotlin spirit & Tailwind CSS.
+      </div>
+      <div class="job" style="--c:var(--purple)">
+        <span class="app-icon" style="--g1:#d07bff;--g2:#6d28d9"><i class="fa-solid fa-code"></i></span>
+        <div>
+          <h3>Android Developer</h3>
+          <div class="co">CCT Technologies, Rawalpindi</div>
+          <ul>
+            <li>Shipped multiple production apps including <strong>Hearto (150K+ downloads)</strong> with Kotlin, MVVM and XML.</li>
+            <li>Hardened security with secure data storage and ProGuard/R8 obfuscation.</li>
+            <li>Integrated 5+ third-party APIs and SDKs alongside a 4-person UI/UX and QA team.</li>
+            <li>Managed debug/release Gradle variants and delivered 3+ custom apps from scratch.</li>
+          </ul>
         </div>
-    </footer>
+      </div>
+    </div>
+    <div class="edu glass lens reveal">
+      <span class="yr">2020 – 2024</span>
+      <h3>BS Software Engineering</h3>
+      <p>Islamia University of Bahawalpur</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Filter Script -->
-    <script>
-        function filterProjects(category) {
-            const cards = document.querySelectorAll('.project-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-android', 'text-darkBg', 'font-bold');
-                btn.classList.add('glass');
-            });
-            event.target.classList.add('bg-android', 'text-darkBg', 'font-bold');
-            event.target.classList.remove('glass');
+<!-- Contact -->
+<section id="contact" class="wrap contact">
+  <div class="reveal">
+    <h2>Let’s build your next Android app.</h2>
+    <p class="lede">Based in Rawalpindi, Pakistan. Open to full-time Android roles, remote work and high-impact mobile projects.</p>
+  </div>
+  <div class="list glass reveal">
+    <a class="row" href="mailto:arsl77220@gmail.com">
+      <span class="app-icon" style="--g1:#5ac8fa;--g2:#0a84ff"><i class="fa-solid fa-envelope"></i></span>
+      <div>Email<small>arsl77220@gmail.com</small></div><i class="fa-solid fa-chevron-right chev"></i>
+    </a>
+    <a class="row" href="tel:+923096004289">
+      <span class="app-icon" style="--g1:#5be37d;--g2:#1fa84a"><i class="fa-solid fa-phone"></i></span>
+      <div>Phone<small>+92 309 6004289</small></div><i class="fa-solid fa-chevron-right chev"></i>
+    </a>
+    <a class="row" href="https://wa.me/923096004289" target="_blank" rel="noopener">
+      <span class="app-icon" style="--g1:#4ee07a;--g2:#128c4a"><i class="fa-brands fa-whatsapp"></i></span>
+      <div>WhatsApp<small>Message me directly</small></div><i class="fa-solid fa-chevron-right chev"></i>
+    </a>
+    <a class="row" href="https://github.com/Arslan338" target="_blank" rel="noopener">
+      <span class="app-icon" style="--g1:#4b5563;--g2:#111827"><i class="fa-brands fa-github"></i></span>
+      <div>GitHub<small>github.com/Arslan338</small></div><i class="fa-solid fa-chevron-right chev"></i>
+    </a>
+    <a class="row" href="https://linkedin.com/in/thearslansaleem" target="_blank" rel="noopener">
+      <span class="app-icon" style="--g1:#3b8eea;--g2:#0a5bb5"><i class="fa-brands fa-linkedin-in"></i></span>
+      <div>LinkedIn<small>in/thearslansaleem</small></div><i class="fa-solid fa-chevron-right chev"></i>
+    </a>
+  </div>
+</section>
+</main>
 
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category.includes(category)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    </script>
+<footer>© <span id="yr">2026</span> Arslan Saleem. Built with Kotlin spirit.</footer>
+
+<!-- Mobile tab bar -->
+<nav class="tabbar glass" aria-label="Sections">
+  <a href="#home" class="active"><i class="fa-solid fa-house"></i>Home</a>
+  <a href="#skills"><i class="fa-solid fa-layer-group"></i>Stack</a>
+  <a href="#projects"><i class="fa-solid fa-table-cells-large"></i>Apps</a>
+  <a href="#experience"><i class="fa-solid fa-briefcase"></i>Work</a>
+  <a href="#contact"><i class="fa-solid fa-paper-plane"></i>Contact</a>
+</nav>
+
+<script>
+/* ======= App data: add a new app by adding one object ======= */
+const APPS = [
+  {id:"web-scanner", name:"Web Scanner", icon:"fa-solid fa-globe", g:["#34e89e","#0f9b5a"], badge:"500K+ downloads", c:"var(--accent)", cats:["viral","utility"],
+   desc:"High-scale web scanning utility with clean XML layouts, third-party SDKs and REST APIs, with debug and release variants managed in Gradle.", tags:["Kotlin","MVVM","REST API","XML"]},
+  {id:"medi-play", name:"Medi Play AI", icon:"fa-solid fa-wand-magic-sparkles", g:["#a78bfa","#6d28d9"], badge:"500K+ downloads", c:"var(--accent)", cats:["viral","ai"],
+   desc:"AI-powered app with AI/LLM REST APIs at the core of its features, using MVVM and LiveData for reliable state handling.", tags:["Kotlin","AI/LLM APIs","MVVM","LiveData"]},
+  {id:"drama-drive", name:"Drama Drive", icon:"fa-solid fa-film", g:["#ff6b6b","#c81d4e"], badge:"200K+ downloads", c:"var(--blue)", cats:["viral","streaming"],
+   desc:"Content-streaming app that delivers content over REST APIs and uses third-party SDKs for engagement and monetization.", tags:["Kotlin","MVVM","REST API","Monetization"]},
+  {id:"hearto", name:"Hearto", icon:"fa-solid fa-heart", g:["#ff8fab","#e11d48"], badge:"150K+ downloads", c:"var(--blue)", cats:["viral"],
+   desc:"Production app shipped at CCT Technologies, built from scratch with Kotlin, MVVM and XML layouts.", tags:["Kotlin","MVVM","XML"]},
+  {id:"reels-bite", name:"Reels Bite", icon:"fa-solid fa-clapperboard", g:["#f472b6","#9333ea"], badge:"50K+ downloads", c:"var(--purple)", cats:["streaming"],
+   desc:"Short-video streaming app with a responsive Kotlin UI, REST API content pipelines and engagement SDKs.", tags:["Kotlin","MVVM","REST API"]},
+  {id:"clap", name:"Clap to Find Phone", icon:"fa-solid fa-hands-clapping", g:["#fbbf24","#ea580c"], badge:"10K+ downloads", c:"var(--orange)", cats:["utility","suite"],
+   desc:"Background utility that listens for a clap with Android Services and real-time audio detection, then rings the phone.", tags:["Kotlin","Android Services","Audio detection"]},
+  {id:"immersive", name:"Immersive Interactive", icon:"fa-solid fa-cube", g:["#38bdf8","#4f46e5"], badge:"10K+ downloads", c:"var(--orange)", cats:[],
+   desc:"Interactive app built on clean object-oriented design and MVVM for long-term maintainability.", tags:["Kotlin","MVVM","XML"]},
+  {id:"ai-image", name:"AI Image Generator", icon:"fa-solid fa-image", g:["#fb7185","#7c3aed"], badge:"AI + AdMob", c:"var(--pink)", cats:["ai"],
+   desc:"Multi-module image generator with prompt input, local history, downloads and lifecycle-aware AdMob banner and interstitial ads.", tags:["Kotlin","AI/LLM API","AdMob"]},
+  {id:"ai-notes", name:"AI Note Taker", icon:"fa-solid fa-note-sticky", g:["#fde047","#f59e0b"], badge:"Productivity", c:"var(--pink)", cats:["ai","utility"],
+   desc:"Notes app that stores offline with Room and uses LLM APIs to enhance notes automatically.", tags:["Kotlin","Room","AI/LLM"]},
+  {id:"bp", name:"BP Health Tracker", icon:"fa-solid fa-heart-pulse", g:["#f87171","#b91c1c"], badge:"Health", c:"var(--teal)", cats:["utility"],
+   desc:"Tracks systolic and diastolic readings across three screens with interactive trend charts and Room persistence.", tags:["Kotlin","Room","Custom charts"]},
+  {id:"drama-shot", name:"Drama Shot", icon:"fa-solid fa-video", g:["#818cf8","#312e81"], badge:"Streaming", c:"var(--faint)", cats:["streaming"],
+   desc:"Short-drama browsing and streaming client with REST API integration and a responsive MVVM UI.", tags:["Kotlin","MVVM","REST API"]},
+  {id:"digi-book", name:"Digi Book", icon:"fa-solid fa-book-open", g:["#fdba74","#c2410c"], badge:"E-reader", c:"var(--faint)", cats:["utility"],
+   desc:"Book reader and library manager using Room and LiveData to keep reading progress up to date.", tags:["Kotlin","MVVM","Room"]},
+  {id:"voice", name:"Voice Recorder Pro", icon:"fa-solid fa-microphone", g:["#fb7185","#be123c"], badge:"Audio", c:"var(--faint)", cats:["utility"],
+   desc:"Recording and playback tool on the MediaRecorder API, with organizing, renaming and deleting recordings.", tags:["Kotlin","MediaRecorder","File I/O"]},
+
+  /* ---- All-Utility suite (from GitHub) ---- */
+  {id:"file-manager", name:"File Manager", icon:"fa-solid fa-folder-open", g:["#60a5fa","#1d4ed8"], badge:"All-Utility suite", c:"var(--accent)", cats:["utility","suite"], isNew:true,
+   desc:"Browse, sort, move and share files across device storage with a clean category view for images, videos, docs and APKs.", tags:["Kotlin","MVVM","File I/O"]},
+  {id:"tv-remote", name:"TV Remote", icon:"fa-solid fa-tv", g:["#94a3b8","#334155"], badge:"All-Utility suite", c:"var(--accent)", cats:["utility","suite"], isNew:true,
+   desc:"Control smart TVs from the phone with a remote-style layout for power, volume, channels and navigation.", tags:["Kotlin","MVVM","Smart TV"]},
+  {id:"mirroring", name:"Screen Mirroring", icon:"fa-solid fa-display", g:["#22d3ee","#0369a1"], badge:"All-Utility suite", c:"var(--accent)", cats:["utility","suite"], isNew:true,
+   desc:"Mirror the phone screen to a TV or display for videos, photos and presentations.", tags:["Kotlin","MVVM","Casting"]},
+  {id:"map-camera", name:"Map Camera", icon:"fa-solid fa-map-location-dot", g:["#4ade80","#15803d"], badge:"All-Utility suite", c:"var(--accent)", cats:["utility","suite"], isNew:true,
+   desc:"Camera that stamps each photo with a GPS location, map preview, date and time.", tags:["Kotlin","CameraX","Location"]},
+  {id:"file-recovery", name:"File Recovery", icon:"fa-solid fa-clock-rotate-left", g:["#f97316","#b45309"], badge:"All-Utility suite", c:"var(--accent)", cats:["utility","suite"], isNew:true,
+   desc:"Scans storage for deleted photos, videos and documents and restores them in a few taps.", tags:["Kotlin","MVVM","File I/O"]},
+  {id:"calc-vault", name:"Calculator Vault", icon:"fa-solid fa-calculator", g:["#a3a3a3","#262626"], badge:"All-Utility suite", c:"var(--accent)", cats:["utility","suite"], isNew:true,
+   desc:"A working calculator that opens a hidden vault for private photos and files when the secret PIN is entered.", tags:["Kotlin","Room","Secure storage"]},
+];
+
+const FILTERS = [
+  {key:"all", label:"All"},
+  {key:"viral", label:"100K+ hits"},
+  {key:"ai", label:"AI & LLM"},
+  {key:"utility", label:"Utility & health"},
+  {key:"streaming", label:"Streaming"},
+  {key:"suite", label:"All-Utility suite"},
+];
+
+const $ = s => document.querySelector(s);
+const iconHTML = (a, extra="") => `<span class="app-icon" style="--g1:${a.g[0]};--g2:${a.g[1]}" ${extra}><i class="${a.icon}"></i></span>`;
+
+/* Project cards */
+$("#grid").innerHTML = APPS.map(a => `
+  <article class="card glass lens" id="app-${a.id}" data-cats="${a.cats.join(" ")}">
+    <div class="card-top">
+      ${iconHTML(a)}
+      <div>
+        <h3>${a.name}</h3>
+        <span class="badge" style="--c:${a.c}">${a.badge}</span>
+      </div>
+      ${a.isNew ? '<span class="new-flag">New</span>' : ""}
+    </div>
+    <p>${a.desc}</p>
+    <div class="tags">${a.tags.map(t => `<span>${t}</span>`).join("")}</div>
+  </article>`).join("");
+
+/* Pixel home screen: 8 apps + 4 in the bottom row */
+const home = APPS.filter(a => !["web-scanner","medi-play","drama-drive","hearto"].includes(a.id)).slice(0, 8);
+const dockApps = APPS.slice(0, 4);
+const homeBtn = a => `<button class="home-app" data-go="${a.id}" aria-label="Open ${a.name}">${iconHTML(a)}<span>${a.name}</span></button>`;
+$("#homeGrid").innerHTML = home.map(homeBtn).join("");
+$("#dock").innerHTML = dockApps.map(a => `<button class="home-app" data-go="${a.id}" aria-label="Open ${a.name}">${iconHTML(a)}</button>`).join("");
+$("#glanceDate").textContent = new Date().toLocaleDateString("en-US", {weekday:"long", month:"short", day:"numeric"});
+
+document.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => {
+  setFilter("all");
+  const card = document.getElementById("app-" + b.dataset.go);
+  card.scrollIntoView({behavior:"smooth", block:"center"});
+  card.classList.remove("flash"); void card.offsetWidth; card.classList.add("flash");
+}));
+
+/* Segmented control filter */
+const seg = $("#segmented"), pill = $("#segPill");
+FILTERS.forEach(f => {
+  const n = f.key === "all" ? APPS.length : APPS.filter(a => a.cats.includes(f.key)).length;
+  const b = document.createElement("button");
+  b.className = "seg-btn"; b.dataset.key = f.key;
+  b.setAttribute("aria-pressed", f.key === "all");
+  b.innerHTML = `${f.label}<em>${n}</em>`;
+  b.addEventListener("click", () => setFilter(f.key));
+  seg.appendChild(b);
+});
+function movePill(){
+  const active = seg.querySelector('[aria-pressed="true"]');
+  pill.style.width = active.offsetWidth + "px";
+  pill.style.transform = `translateX(${active.offsetLeft}px)`;
+}
+function setFilter(key){
+  seg.querySelectorAll(".seg-btn").forEach(b => b.setAttribute("aria-pressed", b.dataset.key === key));
+  document.querySelectorAll(".card").forEach(c => {
+    const show = key === "all" || c.dataset.cats.split(" ").includes(key);
+    c.classList.toggle("hide", !show);
+  });
+  movePill();
+}
+window.addEventListener("resize", movePill);
+document.fonts && document.fonts.ready.then(movePill);
+movePill();
+
+/* Pointer-follow glass sheen */
+document.addEventListener("pointermove", e => {
+  const el = e.target.closest && e.target.closest(".lens");
+  if (!el) return;
+  const r = el.getBoundingClientRect();
+  el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+  el.style.setProperty("--my", (e.clientY - r.top) + "px");
+});
+
+/* Reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} }), {threshold:.12});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* Count-up facts */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (!reduce) document.querySelectorAll("[data-count]").forEach(el => {
+  const to = +el.dataset.count, dec = +(el.dataset.dec || 0), suf = el.dataset.suffix || "", t0 = performance.now(), d = 1200;
+  const tick = t => { const p = Math.min(1, (t - t0) / d), v = to * (1 - Math.pow(1 - p, 3)); el.textContent = v.toFixed(dec) + suf; if (p < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+});
+
+/* Active section in nav + tab bar (scroll-based, works for every link) */
+const SECTIONS = ["home","skills","projects","experience","contact"].map(id => document.getElementById(id));
+const links = document.querySelectorAll(".nav-links a, .tabbar a");
+let lockUntil = 0;
+function setActive(id){ links.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + id)); }
+function spy(){
+  if (Date.now() < lockUntil) return;
+  let current = "home";
+  const line = innerHeight * 0.4;
+  SECTIONS.forEach(sec => { if (sec.getBoundingClientRect().top <= line) current = sec.id; });
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) current = "contact";
+  setActive(current);
+}
+links.forEach(l => l.addEventListener("click", () => {
+  setActive(l.getAttribute("href").slice(1));
+  lockUntil = Date.now() + 900; // keep the tapped tab selected while smooth-scrolling
+}));
+addEventListener("scroll", spy, {passive:true});
+spy();
+
+/* Theme toggle (remembered) */
+const root = document.documentElement;
+try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch(e){}
+$("#themeBtn").addEventListener("click", () => {
+  const isDark = root.dataset.theme ? root.dataset.theme === "dark" : !matchMedia("(prefers-color-scheme: light)").matches;
+  root.dataset.theme = isDark ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch(e){}
+});
+
+/* Live clock on the phone + footer year */
+const pad = n => String(n).padStart(2, "0");
+function updateClock(){ const d = new Date(); $("#clock").textContent = (d.getHours() % 12 || 12) + ":" + pad(d.getMinutes()); }
+updateClock(); setInterval(updateClock, 30000);
+$("#yr").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
